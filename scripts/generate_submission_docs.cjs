@@ -671,9 +671,20 @@ function generatePdf(blocks, outputPath, title = 'MindBridge Specification') {
  */
 async function main() {
   const rootDir = path.resolve(__dirname, '..');
-  console.log('Generating Hackathon Submission Documents...');
+  const docsDir = path.join(rootDir, 'docs');
+  if (!fs.existsSync(docsDir)) {
+    fs.mkdirSync(docsDir, { recursive: true });
+  }
+
+  console.log('Generating MindBridge Submission Documents in docs/...');
 
   const docsToGenerate = [
+    {
+      sourceMd: 'SUMMARY.md',
+      targetDocx: 'SUMMARY.docx',
+      targetPdf: 'SUMMARY.pdf',
+      title: 'MindBridge: Executive Summary'
+    },
     {
       sourceMd: 'SOLUTION_DESCRIPTION.md',
       targetDocx: 'SOLUTION_DESCRIPTION.docx',
@@ -685,38 +696,65 @@ async function main() {
       targetDocx: 'ARCHITECTURE.docx',
       targetPdf: 'ARCHITECTURE.pdf',
       title: 'MindBridge: System Architecture'
+    },
+    {
+      sourceMd: 'PLAN.md',
+      targetDocx: 'PLAN.docx',
+      targetPdf: 'PLAN.pdf',
+      title: 'MindBridge: Implementation Plan'
     }
   ];
 
+  const combinedSections = [];
+
   for (const item of docsToGenerate) {
-    const mdPath = path.join(rootDir, item.sourceMd);
-    const docxPath = path.join(rootDir, item.targetDocx);
-    const pdfPath = path.join(rootDir, item.targetPdf);
+    const mdPath = path.join(docsDir, item.sourceMd);
+    const docxPath = path.join(docsDir, item.targetDocx);
+    const pdfPath = path.join(docsDir, item.targetPdf);
 
     if (!fs.existsSync(mdPath)) {
-      console.warn(`Source markdown file not found: ${item.sourceMd}, skipping.`);
+      console.warn(`Source markdown file not found: docs/${item.sourceMd}, skipping.`);
       continue;
     }
 
-    console.log(`\nProcessing ${item.sourceMd}...`);
+    console.log(`\nProcessing docs/${item.sourceMd}...`);
     const mdContent = fs.readFileSync(mdPath, 'utf8');
+    combinedSections.push(mdContent);
     const blocks = parseMarkdown(mdContent);
     console.log(`  Parsed ${blocks.length} structural blocks.`);
 
     // Generate DOCX
-    console.log(`  Writing ${item.targetDocx}...`);
+    console.log(`  Writing docs/${item.targetDocx}...`);
     await generateDocx(blocks, docxPath, item.title);
     const docxStat = fs.statSync(docxPath);
-    console.log(`  ✓ Created ${item.targetDocx} (${(docxStat.size / 1024).toFixed(1)} KB)`);
+    console.log(`  ✓ Created docs/${item.targetDocx} (${(docxStat.size / 1024).toFixed(1)} KB)`);
 
     // Generate PDF
-    console.log(`  Writing ${item.targetPdf}...`);
+    console.log(`  Writing docs/${item.targetPdf}...`);
     await generatePdf(blocks, pdfPath, item.title);
     const pdfStat = fs.statSync(pdfPath);
-    console.log(`  ✓ Created ${item.targetPdf} (${(pdfStat.size / 1024).toFixed(1)} KB)`);
+    console.log(`  ✓ Created docs/${item.targetPdf} (${(pdfStat.size / 1024).toFixed(1)} KB)`);
   }
 
-  console.log('\nAll documentation files compiled successfully!');
+  // Generate Unified Complete Documentation Dossier
+  if (combinedSections.length > 0) {
+    console.log('\nProcessing unified MindBridge_Complete_Documentation...');
+    const combinedMd = combinedSections.join('\n\n---\n\n');
+    const combinedBlocks = parseMarkdown(combinedMd);
+    const completeDocxPath = path.join(docsDir, 'MindBridge_Complete_Documentation.docx');
+    const completePdfPath = path.join(docsDir, 'MindBridge_Complete_Documentation.pdf');
+    const completeTitle = 'MindBridge: Complete Technical & Submission Documentation';
+
+    await generateDocx(combinedBlocks, completeDocxPath, completeTitle);
+    const cDocxStat = fs.statSync(completeDocxPath);
+    console.log(`  ✓ Created docs/MindBridge_Complete_Documentation.docx (${(cDocxStat.size / 1024).toFixed(1)} KB)`);
+
+    await generatePdf(combinedBlocks, completePdfPath, completeTitle);
+    const cPdfStat = fs.statSync(completePdfPath);
+    console.log(`  ✓ Created docs/MindBridge_Complete_Documentation.pdf (${(cPdfStat.size / 1024).toFixed(1)} KB)`);
+  }
+
+  console.log('\nAll documentation files compiled successfully in docs/!');
 }
 
 main().catch((err) => {
