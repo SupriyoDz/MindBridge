@@ -1,33 +1,44 @@
-# MindBridge: Teaching-Content-to-Review-Ready Artifact Generator
+<div align="center">
 
-> An academic AI studio that ingests raw teaching materials and generates structured, review-ready educational artifacts strictly calibrated by difficulty and Bloom's Taxonomy. Built on a universal, model-agnostic architecture compatible with any modern LLM supporting structured JSON outputs.
+# 🧠 MindBridge
+
+### Teaching-Content-to-Review-Ready Artifact Generator
+
+An academic AI studio that ingests raw teaching materials and generates **4 synchronized, review-ready educational artifacts**—**Lesson Plan**, **Rubric**, **Flashcards**, and **Quiz Bank**—strictly calibrated by difficulty and **Bloom's Taxonomy**. Built on a universal, model-agnostic architecture compatible with any modern LLM supporting structured JSON outputs.
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![PDF.js](https://img.shields.io/badge/PDF.js-EC1C24?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)
+
+</div>
 
 ---
 
-## Key Highlights
+## ✨ Key Highlights
 
-- **Pure Client-Side Architecture**: Built with React, Vite, Tailwind CSS, Recharts, and PDF.js. No custom backend or database required.
-- **Guided Onboarding & Workspace**: Starts on an informative Home & Guide landing view explaining the 4 synchronized artifacts and 6-step pipeline, with a **Get Started** button and 1-click sample dataset launchers.
-- **Universal Model-Agnostic LLM Engine**: Seamlessly compatible with Google Gemini, OpenAI (`gpt-4o`, `gpt-4o-mini`, `o3-mini`), Anthropic Claude, Groq, OpenRouter, DeepSeek, Mistral, Together AI, and local Ollama / LM Studio endpoints. Auto-detects provider from your API key, model name, or base URL.
-- **Content Map as Single Source of Truth (SSOT)**: Analyzes raw input once, establishing standardized Learning Objectives (`LO1`, `LO2`, ...), key concepts, prerequisites, and section citations. All 4 generators read exclusively from this map, never raw text.
-- **Pedagogical Difficulty Profiles & Bloom's Calibrator**:
-  - **Introductory**: Remember + Understand ~70%, Apply ~30%. Plain language, scaffolding.
-  - **Intermediate**: Apply ~45%, Analyze ~30%, Understand ~15%. Mixed scenarios, transfer problems.
-  - **Advanced**: Analyze ~35%, Evaluate ~25%, Create ~20%, Apply ~15%. Edge cases, case studies, open-ended trade-offs.
+- **Pure Client-Side Architecture:** Built with **React**, **Vite**, **Tailwind CSS**, **Recharts**, and **PDF.js**. No custom backend or database required.
+- **Guided Onboarding & Workspace:** Starts on a Home & Guide landing view explaining the 4 synchronized artifacts and 6-step pipeline, with a **Get Started** CTA and 1-click sample dataset launchers.
+- **Universal Model-Agnostic LLM Engine:** Compatible with **Google Gemini**, **OpenAI** (`gpt-4o`, `gpt-4o-mini`, `o3-mini`), **Anthropic Claude**, **Groq**, **OpenRouter**, **DeepSeek**, **Mistral**, **Together AI**, and local **Ollama / LM Studio** endpoints. Auto-detects provider from your API key, model name, or base URL.
+- **Content Map as Single Source of Truth (SSOT):** Analyzes raw input once, establishing standardized Learning Objectives (`LO1`, `LO2`, ...), key concepts, prerequisites, and section citations. All 4 generators read exclusively from this map, never raw text.
+- **Pedagogical Difficulty Profiles & Bloom's Calibrator:**
+  - **Introductory:** Remember + Understand ~70%, Apply ~30% (plain language, scaffolding).
+  - **Intermediate:** Apply ~45%, Analyze ~30%, Understand ~15% (mixed scenarios, transfer problems).
+  - **Advanced:** Analyze ~35%, Evaluate ~25%, Create ~20%, Apply ~15% (edge cases, case studies, open-ended trade-offs).
   - Empirical distribution bar chart with `PASS` / `WARN` badges and one-click recalibration when cognitive drift > 15%.
-- **Review-Ready Teacher Controls**:
-  - Approve / Reject / Needs Edit status per item with a live progress bar.
-  - Coverage Matrix: Verifies all LOs have quiz questions, flashcards, and rubric criteria; one-click "Generate Missing" for uncovered LOs.
-  - "Make Harder" / "Make Easier" on individual flashcards and quiz questions.
-  - Quality Dashboard: 100% JSON validity rate, % items with source citations, LO coverage %, Bloom's alignment score.
-- **Export Package**:
-  - One-click ZIP download with `lesson-plan.md`, `rubric.md`, `flashcards.md`, `flashcards.csv` (Anki-compatible), `quiz-bank.md`, `package.json`, and `print.html`.
-  - Clean "Print / Save as PDF" preview with page breaks and zero UI chrome.
-- **Fully Responsive UI**: Optimized across mobile (320px+), tablet, and desktop screens.
+- **Review-Ready Teacher Controls:**
+  - **Approve / Reject / Needs Edit** status per item with a live progress bar.
+  - **Coverage Matrix:** Verifies all LOs have quiz questions, flashcards, and rubric criteria; one-click **"Generate Missing"** for uncovered LOs.
+  - **"Make Harder" / "Make Easier"** on individual flashcards and quiz questions.
+  - **Quality Dashboard:** 100% JSON validity rate, % items with source citations, LO coverage %, and Bloom's alignment score.
+- **Export Package:**
+  - One-click **ZIP** download containing `lesson-plan.md`, `rubric.md`, `flashcards.md`, `flashcards.csv` (Anki-compatible), `quiz-bank.md`, `package.json`, and `print.html`.
+  - Clean **"Print / Save as PDF"** preview with page breaks and zero UI chrome.
+- **Fully Responsive UI:** Optimized across mobile (`320px+`), tablet, and desktop screens.
 
 ---
 
-## File Structure
+## 📁 Project Structure
 
 ```text
 hackathon/
@@ -38,7 +49,7 @@ hackathon/
 ├── tailwind.config.js
 ├── vite.config.js
 ├── README.md                                  # Quickstart, demo script & overview
-├── docs/                                      # All submission & technical documentation
+├── docs/                                      # Submission & technical documentation
 │   ├── MindBridge_Complete_Documentation.pdf  # Unified submission dossier (PDF)
 │   ├── MindBridge_Complete_Documentation.docx # Unified submission dossier (DOCX)
 │   ├── SOLUTION_DESCRIPTION.md / .pdf / .docx # Full solution description & walkthrough
@@ -76,7 +87,7 @@ hackathon/
 
 ---
 
-## Quickstart & Run Instructions
+## 🚀 Quickstart & Run Instructions
 
 ### 1. Install Dependencies
 ```bash
@@ -86,13 +97,13 @@ npm install
 ### 2. Configure Any LLM Model & API Key
 Create or update `.env` in the project root (see `.env.example` for all provider presets):
 
-```bash
+```env
 # Model name can be ANY model string:
-#   Gemini:    gemini-3.5-flash-lite, gemini-flash-lite-latest, gemini-3-flash-preview
-#   OpenAI:    gpt-4o-mini, gpt-4o, o3-mini
-#   Anthropic: claude-3-5-sonnet-20241022, claude-3-5-haiku-20241022
-#   Groq:      llama-3.3-70b-versatile
-#   Ollama:    llama3.2, mistral, qwen2.5
+# Gemini: gemini-3.5-flash-lite, gemini-flash-lite-latest, gemini-3-flash-preview
+# OpenAI: gpt-4o-mini, gpt-4o, o3-mini
+# Anthropic: claude-3-5-sonnet-20241022, claude-3-5-haiku-20241022
+# Groq: llama-3.3-70b-versatile
+# Ollama: llama3.2, mistral, qwen2.5
 VITE_LLM_MODEL=gemini-3.5-flash-lite
 
 # Provider: auto | gemini | openai | anthropic | groq | openrouter | deepseek | mistral | together | ollama | lmstudio | custom
@@ -124,35 +135,35 @@ npm run docs:generate
 
 ---
 
-## Supporting Documentation (`docs/`)
+## 📚 Supporting Documentation (`docs/`)
 
-All supporting documents are organized in the [`docs/`](./docs) folder in Markdown, DOCX, and PDF formats:
+All supporting documents are organized in the [docs/](https://github.com/SupriyoDz/MindBridge/blob/main/docs) folder in Markdown, DOCX, and PDF formats:
 
-- **[`docs/MindBridge_Complete_Documentation.pdf`](./docs/MindBridge_Complete_Documentation.pdf)** ([`.docx`](./docs/MindBridge_Complete_Documentation.docx)) — Complete unified submission dossier.
-- **[`docs/SUMMARY.md`](./docs/SUMMARY.md)** ([`.pdf`](./docs/SUMMARY.pdf) | [`.docx`](./docs/SUMMARY.docx)) — Executive summary.
-- **[`docs/SOLUTION_DESCRIPTION.md`](./docs/SOLUTION_DESCRIPTION.md)** ([`.pdf`](./docs/SOLUTION_DESCRIPTION.pdf) | [`.docx`](./docs/SOLUTION_DESCRIPTION.docx)) — Full solution description, pedagogical calibration math, and walkthrough.
-- **[`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md)** ([`.pdf`](./docs/ARCHITECTURE.pdf) | [`.docx`](./docs/ARCHITECTURE.docx)) — System architecture, data flow diagrams, and multi-provider inference design.
-- **[`docs/PLAN.md`](./docs/PLAN.md)** ([`.pdf`](./docs/PLAN.pdf) | [`.docx`](./docs/PLAN.docx)) — Implementation roadmap, phase specs, and risk matrix.
+- [docs/MindBridge_Complete_Documentation.pdf](https://github.com/SupriyoDz/MindBridge/blob/main/docs/MindBridge_Complete_Documentation.pdf) ([.docx](https://github.com/SupriyoDz/MindBridge/blob/main/docs/MindBridge_Complete_Documentation.docx)) — Complete unified submission dossier.
+- [docs/SUMMARY.md](https://github.com/SupriyoDz/MindBridge/blob/main/docs/SUMMARY.md) ([.pdf](https://github.com/SupriyoDz/MindBridge/blob/main/docs/SUMMARY.pdf) | [.docx](https://github.com/SupriyoDz/MindBridge/blob/main/docs/SUMMARY.docx)) — Executive summary.
+- [docs/SOLUTION_DESCRIPTION.md](https://github.com/SupriyoDz/MindBridge/blob/main/docs/SOLUTION_DESCRIPTION.md) ([.pdf](https://github.com/SupriyoDz/MindBridge/blob/main/docs/SOLUTION_DESCRIPTION.pdf) | [.docx](https://github.com/SupriyoDz/MindBridge/blob/main/docs/SOLUTION_DESCRIPTION.docx)) — Full solution description, pedagogical calibration math, and walkthrough.
+- [docs/ARCHITECTURE.md](https://github.com/SupriyoDz/MindBridge/blob/main/docs/ARCHITECTURE.md) ([.pdf](https://github.com/SupriyoDz/MindBridge/blob/main/docs/ARCHITECTURE.pdf) | [.docx](https://github.com/SupriyoDz/MindBridge/blob/main/docs/ARCHITECTURE.docx)) — System architecture, data flow diagrams, and multi-provider inference design.
+- [docs/PLAN.md](https://github.com/SupriyoDz/MindBridge/blob/main/docs/PLAN.md) ([.pdf](https://github.com/SupriyoDz/MindBridge/blob/main/docs/PLAN.pdf) | [.docx](https://github.com/SupriyoDz/MindBridge/blob/main/docs/PLAN.docx)) — Implementation roadmap, phase specs, and risk matrix.
 
 ---
 
-## 2-Minute Demo Script
+## 🎬 2-Minute Demo Script
 
 | Time | Action | What to Explain / Observe |
 | :--- | :--- | :--- |
-| **0:00 - 0:15** | **Home & Guide** | Land on the **MindBridge** onboarding page explaining the 4 synchronized artifacts and 6-step workflow. Click **"Get Started in Studio"** (or launch a 1-click sample dataset). |
-| **0:15 - 0:30** | **Step 1: Upload & Parse** | Click **"Messy Lecture Notes (Raft/Paxos)"**. Point out the instant word count (~370 words) and text preview. Long documents (>1500 words) are automatically chunked by headings and summarized before analysis. Click **"Next: Teacher Settings"**. |
-| **0:30 - 0:45** | **Step 2: Teacher Settings** | Select Difficulty: **"Intermediate"**. Note the live pedagogical profile card showing target Bloom's distribution (Apply 45%, Analyze 30%). Set duration to **50 min** and Quiz Items to **8**. Click **"Generate Content Map"** — the UI jumps immediately to the Content Map synthesis screen. |
-| **0:45 - 1:05** | **Step 3: Content Map (SSOT)** | Show the synthesized Content Map. Point out that each Learning Objective has a permanent ID (`LO1`, `LO2`...) and Bloom tag. Demonstrate inline editing (change a Bloom level or tweak a definition). Click **"Confirm Content Map & Generate Artifacts"**. |
-| **1:05 - 1:25** | **Step 4: Multi-Artifact Generation** | Watch the 4 parallel generators running with strict JSON schemas: Lesson Plan, Rubric, Flashcards, and Quiz Bank. Highlight per-artifact status, schema validation, and automatic retry. Click **"Proceed to Calibrator & Review Studio"**. |
-| **1:25 - 1:45** | **Step 5: Calibrate & Review** | Show the **Recharts Bar Chart** comparing actual vs target Bloom's distribution. Notice the `PASS` badge and Alignment Score. Switch tabs in Review Studio: show the 50-min Lesson Plan timeline, 4-level Rubric, Flashcards, and Quiz Bank with distractor misconception rationales. Click **"Make Harder"** on a question to demonstrate dynamic item-level recalibration, and inspect the **Coverage Matrix**. |
-| **1:45 - 2:00** | **Step 6: Export Package** | Show the **Export Studio**. Click **"Download Full ZIP Bundle"** for Markdown files, Anki CSV, `package.json`, and `print.html`. Click **"Open Print / PDF Preview"** for clean academic print layout with page breaks and zero UI chrome. |
+| `0:00 - 0:15` | **Home & Guide** | Land on the MindBridge onboarding page explaining the 4 synchronized artifacts and 6-step workflow. Click **"Get Started in Studio"** (or launch a 1-click sample dataset). |
+| `0:15 - 0:30` | **Step 1: Upload & Parse** | Click **"Messy Lecture Notes (Raft/Paxos)"**. Point out the instant word count (~370 words) and text preview. Long documents (>1500 words) are automatically chunked by headings and summarized before analysis. Click **"Next: Teacher Settings"**. |
+| `0:30 - 0:45` | **Step 2: Teacher Settings** | Select Difficulty: **"Intermediate"**. Note the live pedagogical profile card showing target Bloom's distribution (Apply 45%, Analyze 30%). Set duration to `50 min` and Quiz Items to `8`. Click **"Generate Content Map"**. |
+| `0:45 - 1:05` | **Step 3: Content Map (SSOT)** | Show the synthesized Content Map where each Learning Objective has a permanent ID (`LO1`, `LO2`...) and Bloom tag. Demonstrate inline editing, then click **"Confirm Content Map & Generate Artifacts"**. |
+| `1:05 - 1:25` | **Step 4: Multi-Artifact Generation** | Watch the 4 parallel generators running with strict JSON schemas: Lesson Plan, Rubric, Flashcards, and Quiz Bank. Highlight per-artifact status, schema validation, and automatic retry. Click **"Proceed to Calibrator & Review Studio"**. |
+| `1:25 - 1:45` | **Step 5: Calibrate & Review** | Show the Recharts Bar Chart comparing actual vs target Bloom's distribution (`PASS` badge & Alignment Score). Switch tabs in Review Studio, click **"Make Harder"** on a question to show dynamic recalibration, and inspect the Coverage Matrix. |
+| `1:45 - 2:00` | **Step 6: Export Package** | Click **"Download Full ZIP Bundle"** for Markdown files, Anki CSV, `package.json`, and `print.html`. Click **"Open Print / PDF Preview"** for a clean academic print layout with zero UI chrome. |
 
 ---
 
-## Known Limitations
+## ⚠️ Known Limitations
 
-1. **Scanned / Image-Only PDFs**: The extractor uses client-side `pdf.js` to extract digital text layers. If a user uploads a pure image/scanned PDF without OCR text, the system surfaces a clear alert prompting for searchable digital text or OCR preprocessing.
-2. **Client-Side API Key Storage**: In a purely client-side single-page app architecture, API calls are made directly from the user's browser. In a multi-tenant enterprise deployment, calls can be proxied through a secure backend or edge worker to prevent client-side credential exposure.
-3. **Browser Print Margins**: While clean CSS `@media print` rules enforce page breaks (`page-break-after: always`) and hide UI chrome, final margins and header/footer timestamps are subject to the user's browser print dialog defaults.
-4. **Token Limits on Long Textbooks**: Documents up to ~25,000 words are handled via heading-based chunking and chunk summarization. Multi-hundred-page textbooks (>100,000 words) should be ingested chapter-by-chapter for optimal grounding fidelity.
+- **Scanned / Image-Only PDFs:** Uses client-side `pdf.js` to extract digital text layers. Pure image/scanned PDFs without OCR text trigger a clear alert prompting for searchable digital text or OCR preprocessing.
+- **Client-Side API Key Storage:** In a purely client-side SPA architecture, API calls are made directly from the user's browser. In a multi-tenant enterprise deployment, calls can be proxied through a secure backend or edge worker.
+- **Browser Print Margins:** Clean CSS `@media print` rules enforce page breaks (`page-break-after: always`) and hide UI chrome, while final margins and header/footer timestamps depend on browser print dialog defaults.
+- **Token Limits on Long Textbooks:** Documents up to ~25,000 words are handled via heading-based chunking and chunk summarization. Multi-hundred-page textbooks (>100,000 words) should be ingested chapter-by-chapter for optimal grounding fidelity.
